@@ -9,11 +9,30 @@ const personalMovieDB  = {
     privat: false
 };
 
-const a = prompt('Your last watching film?', ''),
-      b = +prompt('Rating of last film?', '0'),
-      c = prompt('Your last watching film?', ''),
-      d = +prompt('Rating of last film?', '0');
+for(let i = 0; i <= 1; i++){
+    const a = prompt('Your last watching film?', ''),
+          b = +prompt('Rating of last film?', '0');
 
-personalMovieDB.movies[a] = b;
-personalMovieDB.movies[c] = d; 
+          if(a != null && b != null && a != '' && b != '' && a.length < 50){
+            personalMovieDB.movies[a] = b;
+            console.log('done');
+          } else {
+              console.log('error');
+              i--;
+          }
+
+          if(personalMovieDB.count < 10) {
+              console.log('Not good');
+          } else if(personalMovieDB.count >= 10 && personalMovieDB.count < 30){
+              console.log('It is normal');
+          } else if(personalMovieDB.count > 30){
+              console.log('Good!');
+          } else {
+              console.log('Error');
+          }
+
+          
+}
+ 
+
 console.log(personalMovieDB);
