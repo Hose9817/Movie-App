@@ -1,7 +1,17 @@
-const numberOfFilms = +prompt('How much films do you watch?', '0');
+let numberOfFilms;
 // console.log(numberOfFilms);
 
-const personalMovieDB  = {
+function start() {
+    numberOfFilms = +prompt('How much films do you watch?', '');
+
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        numberOfFilms = +prompt('How much films do you watch?', '');
+    }
+}
+
+start();
+
+const personalMovieDB = {
     count: numberOfFilms,
     movies: {},
     actors: {},
@@ -9,30 +19,29 @@ const personalMovieDB  = {
     privat: false
 };
 
-for(let i = 0; i <= 1; i++){
+
+
+for (let i = 0; i < 2; i++) {
     const a = prompt('Your last watching film?', ''),
-          b = +prompt('Rating of last film?', '0');
-
-          if(a != null && b != null && a != '' && b != '' && a.length < 50){
-            personalMovieDB.movies[a] = b;
-            console.log('done');
-          } else {
-              console.log('error');
-              i--;
-          }
-
-          if(personalMovieDB.count < 10) {
-              console.log('Not good');
-          } else if(personalMovieDB.count >= 10 && personalMovieDB.count < 30){
-              console.log('It is normal');
-          } else if(personalMovieDB.count > 30){
-              console.log('Good!');
-          } else {
-              console.log('Error');
-          }
-
-          
+        b = +prompt('Rating of last film?', '0');
+    if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+        personalMovieDB.movies[a] = b;
+        console.log('done loop');
+    } else {
+        console.log('error loop');
+        i--;
+    }
 }
- 
+
+if (personalMovieDB.count < 10) {
+    console.log('You dont watching many movies');
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+    console.log('You are a classic viewer');
+} else if (personalMovieDB.count > 30) {
+    console.log('You are a real film fan!');
+} else {
+    console.log('Error');
+}
+
 
 console.log(personalMovieDB);
